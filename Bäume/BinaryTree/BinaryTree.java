@@ -4,12 +4,13 @@ public class BinaryTree<contentType> {
     BinaryTree<contentType> rightTree;
     contentType content;
 
-    public void BinaryTree() {
+    public BinaryTree() {
 
     }
 
     public BinaryTree(contentType pContent) {
-
+        leftTree = new BinaryTree<contentType>();
+        rightTree = new BinaryTree<contentType>();
     }
 
     public BinaryTree(contentType pContent, BinaryTree<contentType> pLeftTree, BinaryTree<contentType> pRightTree) {
@@ -19,6 +20,10 @@ public class BinaryTree<contentType> {
     }
 
     public void setContent(contentType pContent) {
+        if(content == null){
+            leftTree = new BinaryTree<contentType>();
+            rightTree = new BinaryTree<contentType>();
+        }
         this.content = pContent;
     }
 
@@ -36,6 +41,10 @@ public class BinaryTree<contentType> {
     }
 
     public void setRightTree(BinaryTree<contentType> pTree) {
+
+    }
+
+    public void setLeftTree(BinaryTree<contentType> pTree){
 
     }
 
