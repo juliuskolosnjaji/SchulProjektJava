@@ -41,11 +41,11 @@ public class BinaryTree<contentType> {
     }
 
     public void setRightTree(BinaryTree<contentType> pTree) {
-
+        rightTree = pTree;
     }
 
     public void setLeftTree(BinaryTree<contentType> pTree){
-
+        leftTree = pTree;
     }
 
 }

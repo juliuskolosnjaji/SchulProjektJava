@@ -25,6 +25,12 @@ public class Main extends JPanel {
     }
 
     public static void main(String[] args) {
+
+        //Baum 
+        BinaryTree links = new BinaryTree<String>("Amogus", null, null);
+        BinaryTree rechts = new BinaryTree<String>("Ligma", null, null);
+        BinaryTree root = new BinaryTree<String>("Loool", links, rechts);
+
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Punkt und Linie");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
