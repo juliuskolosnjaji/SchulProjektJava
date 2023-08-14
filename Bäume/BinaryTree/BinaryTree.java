@@ -1,35 +1,41 @@
-public class BinaryTree<contentType>{
-    
+public class BinaryTree<contentType> {
+
     BinaryTree leftTree;
     BinaryTree rightTree;
     contentType content;
 
-    public void BinaryTree(){
+    public void BinaryTree() {
 
     }
 
-    public BinaryTree(contentType pContent){
-        
-    }
-
-    public BinaryTree(contentType pContent, BinaryTree pLeftTree){
+    public BinaryTree(contentType pContent) {
 
     }
 
-    public void setContent(contentType pContent){
+    public BinaryTree(contentType pContent, BinaryTree pLeftTree, BinaryTree pRightTree) {
+        this.leftTree = pLeftTree;
+        this.rightTree = pLeftTree;
+        this.content = pContent;
+    }
+
+    public void setContent(contentType pContent) {
+        this.content = pContent;
+    }
+
+    public contentType getContent(){
+        return this.content;
+    }
+
+    public BinaryTree getLeftTree() {
+        return this.leftTree;
+    }
+
+    public BinaryTree getRightTree() {
+        return this.rightTree;
 
     }
 
-    public BinaryTree getLeftTree(){
-
-    }
-
-    public BinaryTree getRightTree(){
-        return ;
-
-    }
-
-    public void setRightTree(BinaryTree<contentType> pTree ){
+    public void setRightTree(BinaryTree<contentType> pTree) {
 
     }
 
