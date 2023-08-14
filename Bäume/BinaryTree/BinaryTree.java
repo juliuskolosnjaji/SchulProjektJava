@@ -25,6 +25,7 @@ public class BinaryTree<contentType>{
     }
 
     public BinaryTree getRightTree(){
+        return ;
 
     }
 
