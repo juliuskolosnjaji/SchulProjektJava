@@ -1,7 +1,7 @@
 public class BinaryTree<contentType> {
 
-    BinaryTree leftTree;
-    BinaryTree rightTree;
+    BinaryTree<contentType> leftTree;
+    BinaryTree<contentType> rightTree;
     contentType content;
 
     public void BinaryTree() {
@@ -12,7 +12,7 @@ public class BinaryTree<contentType> {
 
     }
 
-    public BinaryTree(contentType pContent, BinaryTree pLeftTree, BinaryTree pRightTree) {
+    public BinaryTree(contentType pContent, BinaryTree<contentType> pLeftTree, BinaryTree<contentType> pRightTree) {
         this.leftTree = pLeftTree;
         this.rightTree = pLeftTree;
         this.content = pContent;
