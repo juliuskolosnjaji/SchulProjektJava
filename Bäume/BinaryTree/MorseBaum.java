@@ -1,14 +1,14 @@
 public class MorseBaum{
     String[] encode_data;
     BinaryTree<Character> myTree;
+
     
+
     public MorseBaum(){
         initialize();
     }
 
-    public static void initialize(){
-        //create Tree
-
+    public void initialize(){
         // First Layer
         BinaryTree<Character> hBaum = new BinaryTree<Character>(new Character('h'));
         BinaryTree<Character> vBaum = new BinaryTree<Character>(new Character('v'));
@@ -43,7 +43,7 @@ public class MorseBaum{
         BinaryTree<Character> eBaum = new BinaryTree<Character>(new Character('e'), iBaum, aBaum);
         BinaryTree<Character> tBaum = new BinaryTree<Character>(new Character('t'), nBaum, mBaum);
 
-        BinaryTree<Character> alphaBaum = new BinaryTree<Character>(null, eBaum, tBaum);
+        myTree = new BinaryTree<Character>(null, eBaum, tBaum);
 
         System.out.println("Initialized!");
     }
@@ -52,10 +52,15 @@ public class MorseBaum{
 
     public void encode(String pText){
         int length = pText.length();
-        for (int i = 0; i == length; i++){
-            if (alphaBaum.getContent() =! pText.charAt(i)){
+        Character lContent = myTree.leftTree.getContent();
+        Character rContent = myTree.rightTree.getContent();
 
+        for (int i = 0; i == length; i++){
+            if (myTree.leftTree.getContent() == null && myTree.rightTree.getContent() == null){
+                System.out.println("No Value");
             }
+            
+
         }
     }
 
