@@ -37,7 +37,6 @@ public class BinaryTree<contentType> {
 
     public BinaryTree getRightTree() {
         return this.rightTree;
-
     }
 
     public void setRightTree(BinaryTree<contentType> pTree) {

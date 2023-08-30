@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Main extends JPanel {
-
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -39,10 +38,8 @@ public class Main extends JPanel {
 
     public static void main(String[] args) {
 
-        //Baum 
-        BinaryTree links = new BinaryTree<String>("Amogus", new BinaryTree<String>("Lul"), new BinaryTree<String>("moin"));
-        BinaryTree rechts = new BinaryTree<String>("Ligma", null, null);
-        BinaryTree root = new BinaryTree<String>("Loool", links, rechts);
+        //Baum
+        
 
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Punkt und Linie");
