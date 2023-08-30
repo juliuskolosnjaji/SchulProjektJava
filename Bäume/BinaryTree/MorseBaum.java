@@ -1,10 +1,13 @@
 public class MorseBaum{
     String[] encode_data;
-    static BinaryTree<Character> myTree;
+    BinaryTree<Character> myTree;
     
-    public MorseBaum(){initialize();}
+    public MorseBaum(){
+        initialize();
+        System.out.println(myTree);
+    }
 
-    public static void initialize(){
+    public void initialize(){
         // First Layer
         BinaryTree<Character> hBaum = new BinaryTree<Character>(new Character('h'));
         BinaryTree<Character> vBaum = new BinaryTree<Character>(new Character('v'));
@@ -14,7 +17,7 @@ public class MorseBaum{
         BinaryTree<Character> jBaum = new BinaryTree<Character>(new Character('j'));
         BinaryTree<Character> bBaum = new BinaryTree<Character>(new Character('b'));
         BinaryTree<Character> xBaum = new BinaryTree<Character>(new Character('x'));
-        BinaryTree<Character> cBaum = new BinaryTree<Character>(new Character('y'));
+        BinaryTree<Character> cBaum = new BinaryTree<Character>(new Character('c'));
         BinaryTree<Character> zBaum = new BinaryTree<Character>(new Character('z'));
         BinaryTree<Character> qBaum = new BinaryTree<Character>(new Character('q'));
         BinaryTree<Character> yBaum = new BinaryTree<Character>(new Character('y'));
@@ -39,38 +42,50 @@ public class MorseBaum{
         BinaryTree<Character> eBaum = new BinaryTree<Character>(new Character('e'), iBaum, aBaum);
         BinaryTree<Character> tBaum = new BinaryTree<Character>(new Character('t'), nBaum, mBaum);
 
-        myTree = new BinaryTree<Character>(null, eBaum, tBaum);
+        myTree = new BinaryTree<Character>(new Character('/'), eBaum, tBaum);
 
         System.out.println("Initialized!");
     }
 
     public String decode(String pCode){return pCode;}
 
-    public static void encode(String pText){
-        int length = pText.length();
-        Character lContent = myTree.leftTree.getContent();
-        Character rContent = myTree.getRightTree().getContent();
-
-        for (int i = 0; i < length; i++){
-            Character currentChar = Character.toLowerCase(pText.charAt(i));
-            if(currentChar == ' '){
-                System.out.print(" ");
-                continue;
-            }
-        }
-
-        BinaryTree<Character> currentNode = myTree;
-        String morseCode = Character.toString(myTree.getContent());
-
-        for (int j = 0; j < morseCode.length(); j++){
-            if(morseCode.charAt(j) == '.'){
-
-            }
-        }
+    public String encode(Character pSex){
+        System.out.println(myTree == null);
+        return encode(pSex, myTree);
     }
 
+	String encode(Character pSex, BinaryTree<Character> pBinaryTree){
+        if(pBinaryTree == null){
+            return "";
+        }
+
+        String r2String = encode(pSex, pBinaryTree.getRightTree());
+        String r1String = encode(pSex, pBinaryTree.getLeftTree());
+
+        if(r2String != ""){
+            return "-" + r2String;
+        }
+        if(r1String != ""){
+            return "." + r1String;
+        }
+        
+        if(pBinaryTree.getLeftTree() != null && pBinaryTree.getLeftTree().getContent() != null){
+            System.out.print("bruh1");
+            if(pBinaryTree.getLeftTree().getContent().equals(pSex)) {
+                return ".";
+            }
+        }
+        if(pBinaryTree.getRightTree() != null && pBinaryTree.getRightTree().getContent() != null){
+            System.out.print("bruh2");
+            if(pBinaryTree.getRightTree().getContent().equals(pSex)) {
+                return "-";
+            }
+        }
+        return "!";
+    }
     public static void main(String args[]){
-        MorseBaum.initialize();
-        MorseBaum.encode("Bruh");
-    }    
+        MorseBaum Baum = new MorseBaum();
+        String encodedBaum = Baum.encode(new Character('t'));
+        System.out.println(encodedBaum);
+    }
 }
