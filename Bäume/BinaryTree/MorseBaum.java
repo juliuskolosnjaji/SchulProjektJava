@@ -59,16 +59,16 @@ public class MorseBaum{
             return "";
         }
 
-        String r2String = encode(pSex, pBinaryTree.getRightTree());
         String r1String = encode(pSex, pBinaryTree.getLeftTree());
-
-        if(r2String != ""){
-            return "-" + r2String;
-        }
+        String r2String = encode(pSex, pBinaryTree.getRightTree());
+        
         if(r1String != ""){
             return "." + r1String;
         }
-        
+        if(r2String != ""){
+            return "-" + r2String;
+        }
+
         if(pBinaryTree.getLeftTree() != null && pBinaryTree.getLeftTree().getContent() != null){
             System.out.print("bruh1");
             if(pBinaryTree.getLeftTree().getContent().equals(pSex)) {
