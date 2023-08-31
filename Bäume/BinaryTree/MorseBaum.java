@@ -47,8 +47,6 @@ public class MorseBaum{
         System.out.println("Initialized!");
     }
 
-    public String decode(String pCode){return pCode;}
-
     public String encode(Character pSex){
         System.out.println(myTree == null);
         return encode(pSex, myTree);
@@ -86,7 +84,18 @@ public class MorseBaum{
         if(pBinaryTree == null){
             return "";
         }
-
+        if(pBinaryTree.getLeftTree() != null && pBinaryTree.getLeftTree().getContent() != null){
+            //System.out.print("bruh1");
+            if(pBinaryTree.getLeftTree().getContent().equals(pSex)) {
+                return ".";
+            }
+        }
+        if(pBinaryTree.getRightTree() != null && pBinaryTree.getRightTree().getContent() != null){
+            //System.out.print("bruh2");
+            if(pBinaryTree.getRightTree().getContent().equals(pSex)) {
+                return "-";
+            }
+        }
         String r1String = encode(pSex, pBinaryTree.getLeftTree());
         String r2String = encode(pSex, pBinaryTree.getRightTree());
         
@@ -96,25 +105,34 @@ public class MorseBaum{
         if(r2String != ""){
             return "-" + r2String;
         }
-
-        if(pBinaryTree.getLeftTree() != null && pBinaryTree.getLeftTree().getContent() != null){
-            System.out.print("bruh1");
-            if(pBinaryTree.getLeftTree().getContent().equals(pSex)) {
-                return ".";
-            }
-        }
-        if(pBinaryTree.getRightTree() != null && pBinaryTree.getRightTree().getContent() != null){
-            System.out.print("bruh2");
-            if(pBinaryTree.getRightTree().getContent().equals(pSex)) {
-                return "-";
-            }
-        }
-        return "ERROR";
-        
+        return "!";
     }
+
+    String decode(String x){
+        String ausgabe = new String();
+        int n = 0;
+        String[] eingabe = x.split("/");
+        
+        while(n < eingabe.length){
+            BinaryTree<Character> tree = myTree;
+            while (!eingabe[n].isEmpty()){
+                if(myTree.getContent().equals('-')){
+                    myTree = myTree.getLeftTree();
+                }
+                else{
+                    myTree = myTree.getRightTree();
+                }
+            }
+        }
+        eingabe[n] = eingabe[n].substring(1);
+        ausgabe = ("0" + ausgabe + myTree.getContent());
+        n++;
+        return ausgabe;
+    }
+
     public static void main(String args[]){
         MorseBaum Baum = new MorseBaum();
-        String encodedBaum = Baum.encode(new Character('t'));
+        String encodedBaum = Baum.encode(new Character('p'));
         System.out.println(encodedBaum);
     }
 }
