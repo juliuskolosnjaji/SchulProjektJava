@@ -147,6 +147,23 @@ public class MorseBaum{
         }
         return "";
     }
+
+    public static String decodeMorseCode (String morseCode, BinaryTree<Character> morsTree ) {
+        StringBuilder decoded = new StringBuilder();
+        String[] words = morseCode.split(" ");
+
+        for (String word : words){
+            if (word.equals("/")){
+                decoded.append(" ");
+            }
+            else {
+                String character = decodeCharacter(word, m);
+                decode.append(character);
+            }
+        }
+        return decoded.toString();
+
+    }
     public static void main(String args[]){
         MorseBaum Baum = new MorseBaum();
         String encodedBaum = Baum.encode(new Character('p'));
