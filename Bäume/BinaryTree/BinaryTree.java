@@ -5,12 +5,15 @@ public class BinaryTree<contentType> {
     contentType content;
 
     public BinaryTree() {
-
+        this.leftTree = null;
+        this.rightTree = null;
+        this.content = null;
     }
 
     public BinaryTree(contentType pContent) {
-        leftTree = new BinaryTree<contentType>();
-        rightTree = new BinaryTree<contentType>();
+        this.leftTree = new BinaryTree<contentType>();
+        this.rightTree = new BinaryTree<contentType>();
+        this.content = pContent;
     }
 
     public BinaryTree(contentType pContent, BinaryTree<contentType> pLeftTree, BinaryTree<contentType> pRightTree) {
