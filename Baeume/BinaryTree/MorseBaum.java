@@ -51,36 +51,7 @@ public class MorseBaum{
         System.out.println(myTree == null);
         return encode(pSex, myTree);
     }
-
 	String encode(Character pSex, BinaryTree<Character> pBinaryTree){
-        /*
-        if (x.equals(' ')) {
-            return " ";
-        }
-        if (tree.getContent() == null) {
-            return "";
-        }
-
-        if (x.equals(tree.getLeftTree().getContent())) {
-            return ".";
-        }
-
-        if (x.equals(tree.getRightTree().getContent())) {
-            return "-";
-        }
-
-        String left = this.encode(x, tree.getLeftTree());
-        if (!left.equals("")) {
-            return "." + left;
-        }
-
-        String right = this.encode(x, tree.getRightTree());
-        if (!(right == "")) {
-            return "-" + right;
-        }
-
-        return "";
-        */
         if(pBinaryTree.getContent() == null){
             return "";
         }
@@ -162,7 +133,6 @@ public class MorseBaum{
             }
         }
         return decoded.toString();
-
     }
     public static void main(String args[]){
         MorseBaum Baum = new MorseBaum();
