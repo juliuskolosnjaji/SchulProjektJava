@@ -148,7 +148,7 @@ public class MorseBaum{
         return "";
     }
 
-    public static String decodeMorseCode (String morseCode, BinaryTree<Character> morsTree ) {
+    public static String decodeMorseCode (String morseCode, BinaryTree<String> morseTree ) {
         StringBuilder decoded = new StringBuilder();
         String[] words = morseCode.split(" ");
 
@@ -157,8 +157,8 @@ public class MorseBaum{
                 decoded.append(" ");
             }
             else {
-                String character = decodeCharacter(word, m);
-                decode.append(character);
+                String character = decodeCharacter(word, morseTree);
+                decoded.append(character);
             }
         }
         return decoded.toString();

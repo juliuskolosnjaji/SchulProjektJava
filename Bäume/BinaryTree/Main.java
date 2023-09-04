@@ -30,7 +30,5 @@ public class Main {
             drawTree(pTree.getRightTree(), f, xBound + (300 / lvl), lvl + 1);
         }
         f.add(content);
-
     }
-
-}  
+}
