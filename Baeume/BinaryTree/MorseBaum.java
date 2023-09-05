@@ -1,10 +1,10 @@
+import java.util.Scanner;
 public class MorseBaum{
     String[] encode_data;
-    BinaryTree<Character> myTree;
+    public static BinaryTree<Character> myTree;
     
     public MorseBaum(){
         initialize();
-        System.out.println(myTree);
     }
 
     public void initialize(){
@@ -43,7 +43,6 @@ public class MorseBaum{
         BinaryTree<Character> tBaum = new BinaryTree<Character>(new Character('t'), nBaum, mBaum);
 
         this.myTree = new BinaryTree<Character>(new Character(' '), eBaum, tBaum);
-
         System.out.println("Initialized!");
     }
 
@@ -80,65 +79,42 @@ public class MorseBaum{
     }
 
     String decode(String x){
-        String ausgabe = new String();
-        int n = 0;
+        String ausgabeString = "";
         String[] eingabe = x.split("/");
-        
-        while(n < eingabe.length){
+
+        for (int n = 0; n < eingabe.length; n++){
             BinaryTree<Character> tree = myTree;
-            while (!eingabe[n].isEmpty()){
-                if(tree.getContent().equals('-')){
-                    tree = tree.getRightTree();
-                }
-                else{
+            if (tree == null){
+                return ausgabeString;
+            }
+            String morseCode = eingabe[n];
+
+            while (!morseCode.isEmpty()){
+                String symbol = morseCode.substring(0,1);
+                morseCode = morseCode.substring(1);
+
+                if (symbol.equals(".")){
                     tree = tree.getLeftTree();
                 }
-                
+                else if (symbol.equals("-")){
+                    tree = tree.getRightTree();
+                }
+
+                if (tree == null){
+                    return ausgabeString;
+                }
             }
+
+            ausgabeString += tree.getContent();
         }
-        eingabe[n] = eingabe[n].substring(1);
-        ausgabe = ("0" + ausgabe + myTree.getContent());
-        n++;
-        return ausgabe;
+        return ausgabeString;
     }
 
-    public static String decodeCharacter (String morseCode, BinaryTree<String> current){
-        if (morseCode.isEmpty()){
-            return current.getContent();
-        }
-
-        char symbol = morseCode.charAt(0);
-        if (symbol == '.'){
-            return decodeCharacter(morseCode.substring(1), current.getLeftTree());
-        }
-        else if (symbol == '-'){
-            return decodeCharacter(morseCode.substring(1), current.getRightTree());
-        } else if (symbol == '/'){
-            return " ";
-        }
-        return "";
-    }
-
-    public static String decodeMorseCode (String morseCode, BinaryTree<String> morseTree ) {
-        StringBuilder decoded = new StringBuilder();
-        String[] words = morseCode.split(" ");
-
-        for (String word : words){
-            if (word.equals("/")){
-                decoded.append(" ");
-            }
-            else {
-                String character = decodeCharacter(word, morseTree);
-                decoded.append(character);
-            }
-        }
-        return decoded.toString();
-    }
     public static void main(String args[]){
         MorseBaum Baum = new MorseBaum();
         String encodedBaum = Baum.encode(new Character('p'));
-        String decodedBaum = Baum.decode("/.--./");
-        System.out.println(decodedBaum);
+        String decodeBaum = Baum.decode("/.../");
+        System.out.println(decodeBaum);
         System.out.println(encodedBaum);
     }
 }
