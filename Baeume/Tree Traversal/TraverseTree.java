@@ -8,9 +8,9 @@ public class TraverseTree{
   public static String midOrder(BinaryTree<Character> pTree) {
     if (pTree == null) {return "";}
     if(pTree.getContent() != null) {
-      return (preOrder(pTree.getLeftTree()) + pTree.getContent() + preOrder(pTree.getRightTree()));
+      return (midOrder(pTree.getLeftTree()) + pTree.getContent() + midOrder(pTree.getRightTree()));
     } else {
-      return (preOrder(pTree.getLeftTree()) + preOrder(pTree.getRightTree()));
+      return (midOrder(pTree.getLeftTree()) + midOrder(pTree.getRightTree()));
     }
   }
 
@@ -26,9 +26,9 @@ public class TraverseTree{
   public static String postOrder(BinaryTree<Character> pTree) {
     if (pTree == null){ return "";}
     if(pTree.getContent() != null) {
-      return (preOrder(pTree.getLeftTree()) + preOrder(pTree.getRightTree()) + pTree.getContent());
+      return (postOrder(pTree.getLeftTree()) + postOrder(pTree.getRightTree()) + pTree.getContent());
     } else {
-      return (preOrder(pTree.getLeftTree()) + preOrder(pTree.getRightTree()));
+      return (postOrder(pTree.getLeftTree()) + postOrder(pTree.getRightTree()));
     }
   }
   public static void main(String args[]){
