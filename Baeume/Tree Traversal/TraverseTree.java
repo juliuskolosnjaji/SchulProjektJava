@@ -1,5 +1,5 @@
 public class TraverseTree{
-  public void TraverseTree(){
+  public static void TraverseTree(){
     MorseBaum Baum = new MorseBaum();
     System.out.println(midOrder(Baum.myTree));
     System.out.println(preOrder(Baum.myTree));
