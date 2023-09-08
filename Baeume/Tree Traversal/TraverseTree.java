@@ -1,7 +1,9 @@
+import BinaryTree;
 public class TraverseTree{
-  public String midOrder(pTree BinaryTree<Character>) {
-    if (pTree == null) return "";
-    
+  public void TraverseTree(){}
+  public static String midOrder(pTree BinaryTree<Character>) {
+    if (pTree == null) {return "";}
+
     if(pTree.getContent() != null) {
       return (pTree.getContent() + preOrder(pTree.getLeftTree()) + preOrder(pTree.getRightTree()));
     } else {
@@ -9,7 +11,7 @@ public class TraverseTree{
     }
   }
 
-  public String preOrder(pTree BinaryTree<Character>) {
+  public static String preOrder(pTree BinaryTree<Character>) {
     if (pTree == null){ return "";}
     if(pTree.getContent() != null) {
       return (pTree.getContent() + preOrder(pTree.getLeftTree()) + preOrder(pTree.getRightTree()));
@@ -18,7 +20,7 @@ public class TraverseTree{
     }
   }
 
-  public String postOrder(pTree BinaryTree<Character>) {
+  public static String postOrder(pTree BinaryTree<Character>) {
     if (pTree == null){ return "";}
 
     if(pTree.getContent() != null) {
@@ -26,4 +28,5 @@ public class TraverseTree{
     } else {
       return (preOrder(pTree.getLeftTree()) + preOrder(pTree.getRightTree()));
     }
+  }
 }
