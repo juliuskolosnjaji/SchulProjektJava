@@ -1,32 +1,45 @@
 public class TraverseTree{
-  public String inOrder (pTree BinaryTree<Character>){
-    String rückgabe = "";
-    if(pTree.getContent == null){
+  public String midOrder(pTree BinaryTree<Character>) {
+    if (pTree == null) return "";
+    
+    if(pTree.getContent() != null) {
+      return 
+        pTree.getContent() +
+        preOrder(pTree.getLeftTree()) + 
+        preOrder(pTree.getRightTree());
     } else {
-      rückgabe = inOrder(pTree.getLeftTree());
-      rückgabe.concat(pTree.getContent());
-      rückgabe.concat(inOrder(pTree.getRightTree()));
+      return
+        preOrder(pTree.getLeftTree()) + 
+        preOrder(pTree.getRightTree());
     }
-    return (rückgabe);
   }
 
-  public String preOrder(pTree BinaryTree<Character>){
-    String rückgabe = "";
-    if(pTree.getContent() != null){
-      rückgabe = preOrder(pTree.getContent() + "");
-      preOrder(pTree.getLeftTree());
-      preOrder(pTree.getRightTree());
+  public String preOrder(pTree BinaryTree<Character>) {
+    if (pTree == null) return "";
+    
+    if(pTree.getContent() != null) {
+      return 
+        pTree.getContent() +
+        preOrder(pTree.getLeftTree()) + 
+        preOrder(pTree.getRightTree());
+    } else {
+      return
+        preOrder(pTree.getLeftTree()) + 
+        preOrder(pTree.getRightTree());
     }
-    return (rückgabe);
   }
 
-  public String postOrder(pTree BinaryTree<Character>){
-    String rückgabe = "";
-    if (pTree.getContent() != null){
-      postOrder(pTree.getLeftTree());
-      postOrder(pTree.getRightTree());
-      rückgabe = pTree.getContent() + " ";
+  public String postOrder(pTree BinaryTree<Character>) {
+    if (pTree == null) return "";
+    
+    if(pTree.getContent() != null) {
+      return
+        preOrder(pTree.getLeftTree()) + 
+        preOrder(pTree.getRightTree()) +
+        pTree.getContent();
+    } else {
+      return
+        preOrder(pTree.getLeftTree()) + 
+        preOrder(pTree.getRightTree());
     }
-    return (rückgabe);
-  }
 }
