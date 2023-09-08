@@ -8,7 +8,7 @@ public class TraverseTree{
   public static String midOrder(BinaryTree<Character> pTree) {
     if (pTree == null) {return "";}
     if(pTree.getContent() != null) {
-      return (pTree.getContent() + preOrder(pTree.getLeftTree()) + preOrder(pTree.getRightTree()));
+      return (preOrder(pTree.getLeftTree()) + pTree.getContent() + preOrder(pTree.getRightTree()));
     } else {
       return (preOrder(pTree.getLeftTree()) + preOrder(pTree.getRightTree()));
     }
